@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>Presentation admin</title>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+
+	<style>
+		body {
+			min-height: 100vh;
+			display: flex;
+			margin: 0;
+			padding: 0;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+	</style>
+
+	<script
+	  src="https://code.jquery.com/jquery-3.4.1.min.js"
+	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	  crossorigin="anonymous"></script>
+</head>
+
+<body>
+<h1>Presentation admin</h1>
+
+<div>
+	<p>Select a slide:</p>
+	<input id="slide-change" type="number" value="1" min="1">
+	<p id="notify">Slide is at 1</p>
+</div>
+
+
+
+
+<script>
+// JS time. AJAX it to the API and have that modify the file
+$("#slide-change").change(function() {
+	console.log($("#slide-change").val());
+
+	$.post(
+		'api.php',
+		{ slide: $("#slide-change").val() }
+	).done(function( data ) {
+		if (data === 'good') {
+			$("#notify").html("Slide changed to " + $("#slide-change").val());
+		} else {
+			alert("Something went bad!");
+		}
+	});
+});
+
+</script>
+</body>
+</html>

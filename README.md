@@ -10,4 +10,6 @@ Send viewers to client.php. The presenter uses admin.php. The presenter changes 
 
 To make new slides, add them as HTML files to `/slides`. Make sure the file has a reference to `/js/presenter.js`. Otherwise I think you can put whatever you want in.
 
+## Notes
 
+Uses jQuery 3 slim.
